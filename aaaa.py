@@ -81,6 +81,44 @@ list.copy()
 deque(['Michael', 'Terry', 'Graham'])
 """
 
+#------------------------Tuples
+#immutable
+"""
+>>> t = 12345, 54321, 'hello!'
+>>> t[0]
+12345
+>>> t
+(12345, 54321, 'hello!')
+>>> # Tuples may be nested:
+... u = t, (1, 2, 3, 4, 5)
+>>> u
+((12345, 54321, 'hello!'), (1, 2, 3, 4, 5))
+>>> # Tuples are immutable:
+... t[0] = 88888
+Traceback (most recent call last):
+  File "<stdin>", line 1, in <module>
+TypeError: 'tuple' object does not support item assignment
+>>> # but they can contain mutable objects:
+... v = ([1, 2, 3], [3, 2, 1])
+>>> v
+([1, 2, 3], [3, 2, 1])
+
+
+>>> empty = ()
+>>> singleton = 'hello',    # <-- note trailing comma
+>>> len(empty)
+0
+>>> len(singleton)
+1
+>>> singleton
+('hello',)
+
+The statement t = 12345, 54321, 'hello!' is an example of 
+tuple packing: the values 12345, 54321 and 'hello!' are 
+packed together in a tuple. The reverse operation is also possible:
+
+>>> x, y, z = t
+"""
 
 
 """
@@ -89,12 +127,10 @@ BFS
 Binary Tree
 Binary Search
 
-Stack
-Queues
+
 Linked List
 Dictionary
-Array
-List
+
 Tuples
 
 Bubble Sort

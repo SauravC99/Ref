@@ -194,3 +194,84 @@ def largest(arr):
     return maxSum
 
 print(largest([7,1,2,-1,3,4,10,-12,3,21,-19]))
+
+def anagram(s1, s2):
+    s1 = s1.replace(' ', '').lower()
+    s2 = s2.replace(' ', '').lower()
+
+    if len(s1) != len(s2):
+        return False
+
+    #count frequency of each letter
+    count = {}
+
+    for letter in s1: #for every letter in first string
+        if letter in count: #if string is already in dictionary
+            count[letter] += 1 #add 1 to that letter key
+        else:
+            count[letter] = 1
+
+    #do reverse for second string
+    for letter in s2:
+        if letter in count:
+            count[letter] -= 1
+        else:
+            count[letter] = 1
+
+    for k in count:
+        if count[k] != 0:
+            return False
+
+    return True
+
+#array pair sum
+#Given an integer array, output all the uniqe pairs that sum up to k
+#So the input:
+#pair_sum([1,3,2,2],4) would return
+#(1,3) and (2,2)
+
+def pairSum(array, k):
+    if len(array) < 2:
+        return print("Too small")
+
+    seen = set()
+    output = set()
+
+    for num in array:
+        target = k - num
+
+        if target not in seen:
+            seen.add(num)
+
+        else:
+            output.add((min(num, target), max(num, target)))
+
+    print('\n'.join(map(str, list(output))))
+
+pairSum([1,3,2,2], 4)
+
+#reverse a string
+#Given a string of words, reverse all the words
+#start = "This is the best"
+#finish = "best the is This"
+
+def reverse(s):
+    length = len(s)
+    spaces = [' ']
+    words = []
+    i = 0
+
+    while i < length:
+        if s[i] not in spaces:
+            wordStart = i
+
+            while i < length and s[i] not in spaces:
+                i += 1
+
+            words.append(s[wordStart:i])
+
+        i += 1
+
+    return "".join(reversed(s))
+
+print(reverse("This is the best"))
